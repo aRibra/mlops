@@ -8,10 +8,11 @@ The `student_exam_result.py` contains all the definitions and classes for the _S
 
 The notebook `Student_Exam_Result.ipynb` is used to demonstrate the usage of the code.
 
-Below, we use the same dataset to build multiple models (_LogisticRegression_) each responsible of predicting categorical encoded values of:
+Below, we use the same dataset to build multiple models (_LogisticRegression_) each responsible for predicting categorical encoded values of:
 - `MatchScore`
 - `WritingScore`
 - `ReadingScore`
+
 
 ### `StudentExamResultFramework` class
 This class is the main class for the framework. It has a main method `run_pipeline()` which runs the whole system pipeline including:
@@ -41,7 +42,9 @@ When selecting one of these target columns, the column will be encoded categoric
 
 You can choose a higher number of bins which will have more bins with smaller score intervals. Or, choose a lower number of bins which will have fewer bins with larger score intervals.
 
-#### Dataset
+### Dataset
 - students-exam-scores
 - Kaggle link: https://www.kaggle.com/datasets/desalegngeb/students-exam-scores
 
+### CI/CD
+Provided a yaml file `.github/workflows/app.yml` configuring a build run before authorizing a commit. The workflow runs tests configured in `tests/test_student_framework.py` using pytest.
