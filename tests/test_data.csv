@@ -1,0 +1,4 @@
+Unnamed: 0,Gender,EthnicGroup,ParentEduc,LunchType,TestPrep,ParentMaritalStatus,PracticeSport,IsFirstChild,NrSiblings,TransportMeans,WklyStudyHours,MathScore,ReadingScore,WritingScore
+1,Male,Group A,High School,Standard,None,Married,Yes,Yes,1,Car,<5,65,70,75
+2,Female,Group B,Bachelor,Free/Reduced,Completed,Single,No,No,2,Bus,5-10,78,80,82
+3,Female,Group C,Master,Standard,None,Married,Yes,Yes,3,Bike,10-15,90,85,88
