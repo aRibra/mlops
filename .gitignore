@@ -1,3 +1,6 @@
+# generated reports from pytest
+reports/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

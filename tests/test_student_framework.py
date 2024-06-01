@@ -1,11 +1,11 @@
 import pytest
 import pandas as pd
-from student_exam_result import StudentExamData, DataPreprocessor, Model, ModelEvaluator
+from src.student_exam_result import StudentExamData, DataPreprocessor, Model, ModelEvaluator
 
 
 # Dummy data for testing
 dummy_data = {
-    # 'Unnamed: 0': [1, 2, 3],
+    'Unnamed: 0': [1, 2, 3],
     'Gender': ['Male', 'Female', 'Female'],
     'EthnicGroup': ['Group A', 'Group B', 'Group C'],
     'ParentEduc': ['High School', 'Bachelor', 'Master'],
@@ -25,7 +25,7 @@ dummy_data = {
 dummy_df = pd.DataFrame(dummy_data)
 
 def test_student_exam_data():
-    student_data = StudentExamData('tests/dummy_data.csv')
+    student_data = StudentExamData('tests/test_data.csv')
     assert not student_data.data.empty, "Data should be loaded correctly"
 
 def test_data_preprocessor():
