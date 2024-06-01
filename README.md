@@ -6,14 +6,14 @@ Toy example for predicting Student Exam Results
 
 The `student_exam_result.py` contains all the definitions and classes for the _Student Exam Result_ project.
 
-This notebook is used to demonstrate the usage of the code.
+The notebook `Student_Exam_Result.ipynb` is used to demonstrate the usage of the code.
 
 Below, we use the same dataset to build multiple models (_LogisticRegression_) each responsible of predicting categorical encoded values of:
 - `MatchScore`
 - `WritingScore`
 - `ReadingScore`
 
-### StudentExamResultFramework
+### `StudentExamResultFramework` calss
 This class is the main class for the framework. It has a main method `run_pipeline()` which runs the whole system pipeline including:
 - Analyzing data
 - Cleaning data
