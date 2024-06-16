@@ -25,7 +25,7 @@ dummy_data = {
 dummy_df = pd.DataFrame(dummy_data)
 
 def test_student_exam_data():
-    student_data = StudentExamData('tests/test_data.csv')
+    student_data = StudentExamData('student_exam_results/tests/test_data.csv')
     assert not student_data.data.empty, "Data should be loaded correctly"
 
 def test_data_preprocessor():
