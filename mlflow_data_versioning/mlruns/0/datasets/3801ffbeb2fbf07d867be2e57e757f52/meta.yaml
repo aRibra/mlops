@@ -1,0 +1,6 @@
+digest: a42f2dca
+name: dataset
+profile: '{"num_rows": 51, "num_elements": 51}'
+schema: '{"mlflow_colspec": [{"type": "string", "name": "text", "required": true}]}'
+source: '{"uri": "text_data/text_train_2307.08621.csv"}'
+source_type: local

@@ -1,0 +1,158 @@
+text,response
+"Retentive Network: A Successor to Transformer
+for Large Language Models
+Yutao Sun∗†‡
+Li Dong∗†
+Shaohan Huang†
+Shuming Ma†
+Yuqing Xia†
+Jilong Xue†
+Jianyong Wang‡
+Furu Wei†⋄
+† Microsoft Research
+‡ Tsinghua University
+https://aka.ms/GeneralAI
+Abstract
+In this work, we propose Retentive Network (RETNET) as a foundation architecture for large language models, simultaneously achieving training parallelism,
+low-cost inference, and good performance. We theoretically derive the connection
+between recurrence and attention. Then we propose the retention mechanism for
+sequence modeling, which supports three computation paradigms, i.e., parallel,
+recurrent, and chunkwise recurrent. Specifically, the parallel representation allows
+for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latency, and GPU memory without
+sacrificing performance. The chunkwise recurrent representation facilitates effi-","Question 1: What is the main goal of the proposed architecture, RETNET?
+Answer 1: The main goal of the proposed architecture, RETNET, is to achieve training parallelism, low-cost inference, and good performance simultaneously.
+
+     Question 2: What is the connection between recurrence and attention, according to the authors?
+Answer 2: The authors theoretically derive the connection between recurrence and attention, showing that recurrence can be viewed as a form of attention.
+
+     Question 3: What is the retention mechanism proposed in the work, and what are its three computation paradigms?
+Answer 3: The retention mechanism is a sequence modeling approach that supports three computation paradigms: parallel, recurrent, and chunkwise recurrent. These paradigms allow for training parallelism, low-cost inference, and effiient sequence modeling, respectively."
+"ence, which improves decoding throughput, latency, and GPU memory without
+sacrificing performance. The chunkwise recurrent representation facilitates efficient long-sequence modeling with linear complexity, where each chunk is encoded
+parallelly while recurrently summarizing the chunks. Experimental results on
+language modeling show that RETNET achieves favorable scaling results, parallel
+training, low-cost deployment, and efficient inference. The intriguing properties
+make RETNET a strong successor to Transformer for large language models. Code
+will be available at https://aka.ms/retnet.
+0
+20
+40
+0
+150
+300
+0
+150
+300
+GPU Memory↓
+(GB)
+Throughput↑
+(wps)
+Latency↓
+(ms)
+3.4X
+15.6X
+8.4X
+Inference Cost
+Scaling Curve
+RetNet
+Transformer
+1
+3
+7
+LM Perplexity
+Model Size (B)
+Figure 1: Retentive network (RetNet) achieves low-cost inference (i.e., GPU memory, throughput,
+and latency), training parallelism, and favorable scaling curves compared with Transformer. Results","Question 1: What does the chart in the output show?
+Answer 1: The chart in the output shows the scaling curves of RetNet and Transformer in terms of GPU memory, throughput, and latency.
+
+     Question 2: What is the main advantage of RetNet over Transformer?
+Answer 2: The main advantage of RetNet over Transformer is its ability to achieve low-cost inference while maintaining high throughput and low latency.
+
+     Question 3: What does the figure in the output show?
+Answer 3: The figure in the output shows the model size and perplexity of the languagedzie models trained on RetNet and Transformer."
+"Figure 1: Retentive network (RetNet) achieves low-cost inference (i.e., GPU memory, throughput,
+and latency), training parallelism, and favorable scaling curves compared with Transformer. Results
+of inference cost are reported with 8k as input length. Figure 6 shows more results on different
+sequence lengths.
+∗Equal contribution. ⋄Corresponding author.
+arXiv:2307.08621v4  [cs.CL]  9 Aug 2023
+“
+The only way to discover the limits of the possible is to go beyond them into the impossible.
+Arthur C. Clarke”
+1
+Introduction
+Low-Cost
+Inference
+Transformer
+RetNet
+Figure 2: RetNet makes the “impossible triangle”
+possible, which achieves training parallelism, good
+performance, and low inference cost simultaneously.
+Transformer [VSP+17] has become the de
+facto architecture for large language models [BMR+20], which was initially proposed
+to overcome the sequential training issue of
+recurrent models [HS97]. However, training
+parallelism of Transformers is at the cost of in-","Question 1: What is the main advantage of RetNet compared to Transformer?
+Answer 1: RetNet achieves low-cost inference, training parallelism, and favorable scaling curves compared to Transformer.
+
+     Question 2: What does Figure 2 show?
+Answer 2: Figure 2 shows that RetNet makes the ""impossible triangle"" possible, which achieves training parallelism, good performance, and low inference cost simultaneously.
+
+     Question 3: What was initially proposed to overcome the sequential training issue of recurrent models?
+Answer 3: Transformer [VSP+17] was initially proposed to overcome the sequential training issue of recurrent models, which was initially proposed by HS97."
+"els [BMR+20], which was initially proposed
+to overcome the sequential training issue of
+recurrent models [HS97]. However, training
+parallelism of Transformers is at the cost of inefficient inference, because of the O(N) complexity per step and memory-bound key-value
+cache [Sha19], which renders Transformers unfriendly to deployment. The growing sequence
+length increases GPU memory consumption as
+well as latency and reduces inference speed.
+Numerous efforts have continued to develop the
+next-generation architecture, aiming at retaining training parallelism and competitive performance as Transformers while having efficient
+O(1) inference. It is challenging to achieve the
+above goals simultaneously, i.e., the so-called
+“impossible triangle” as shown in Figure 2.
+There have been three main strands of research.
+First, linearized attention [KVPF20] approximates standard attention scores exp(q · k) with kernels","Question 1: What was initially proposed to overcome the sequential training issue of recurrent models?
+Answer 1: els [BMR+20].
+
+     Question 2: What is the O(N) complexity per step and memory-bound key-value cache in Transformers?
+Answer 2: The growing sequence length increases GPU memory consumption as well as latency and reduces inference speed.
+
+     Question 3: What is the so-called ""impossible triangle"" in the context of next-generation architecture?
+Answer 3: It is challenging to achieve the goals of retaining training parallelism and competitive performance as Transformers while having efficient O(1) inference.
+
+Note: The numbers in the input and output are just examples and do not reflect the actual numbers in the text."
+"“impossible triangle” as shown in Figure 2.
+There have been three main strands of research.
+First, linearized attention [KVPF20] approximates standard attention scores exp(q · k) with kernels
+ϕ(q) · ϕ(k), so that autoregressive inference can be rewritten in a recurrent form. However, the
+modeling capability and performance are worse than Transformers, which hinders the method’s popularity. The second strand returns to recurrent models for efficient inference while sacrificing training
+parallelism. As a remedy, element-wise operators [PAA+23] are used for acceleration, however,
+representation capacity and performance are harmed. The third line of research explores replacing
+attention with other mechanisms, such as S4 [GGR21], and its variants [DFS+22, PMN+23]. None
+of the previous work can break through the impossible triangle, resulting in no clear winner compared
+with Transformers.
+In this work, we propose retentive networks (RetNet), achieving low-cost inference, efficient long-","Question 1: What is the main idea of the text?
+Answer 1: The main idea of the text is that there have been three main strands of research on improving attention mechanisms in neural networks, but none of them have been able to break through the ""impossible triangle"" of low-cost inference, efficient long-term memory, and high performance.
+
+     Question 2: What is the ""impossible triangle"" in the context of attention mechanisms?
+Answer 2: The ""impossible triangle"" refers to the idea that it is difficult to achieve low-cost inference, efficient long-term memory, and high performance in attention mechanisms simultaneously.
+
+     Question 3: What is the main contributionscript of the proposed RetNet model?
+Answer 3: The main contribution of the proposed RetNet model is achieving low-cost inference and efficient long-term memory while maintaining high performance in attention mechanisms."
+"with Transformers.
+In this work, we propose retentive networks (RetNet), achieving low-cost inference, efficient longsequence modeling, Transformer-comparable performance, and parallel model training simultaneously. Specifically, we introduce a multi-scale retention mechanism to substitute multi-head attention,
+which has three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent representations. First, the parallel representation empowers training parallelism to utilize GPU devices
+fully. Second, the recurrent representation enables efficient O(1) inference in terms of memory
+and computation. The deployment cost and latency can be significantly reduced. Moreover, the
+implementation is greatly simplified without key-value cache tricks. Third, the chunkwise recurrent
+representation can perform efficient long-sequence modeling. We parallelly encode each local block
+for computation speed while recurrently encoding the global blocks to save GPU memory.","Question 1: What does the author propose in the work?
+Answer 1: The author proposes RetNet, a low-cost inference and efficient long-sequence modeling method.
+
+     Question 2: What is the multi-scale retention mechanism in RetNet?
+Answer 2: The multi-scale retention mechanism substitutes multi-head attention and enables efficient O(1) inference in terms of memory and computation.
+
+     Question 3: What are the three computation paradigms in RetNet?
+Answer 3: The three computation paradigms in RetNet are parallel, recurrent, and chunkwise recurrent representations."

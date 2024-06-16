@@ -1,0 +1,9 @@
+digest: a6fee9ff
+name: dataset
+profile: '{"num_rows": 18, "num_elements": 72}'
+schema: '{"mlflow_colspec": [{"type": "string", "name": "Question", "required": true},
+  {"type": "string", "name": "Answer", "required": true}, {"type": "string", "name":
+  "text_question", "required": true}, {"type": "string", "name": "text_answer", "required":
+  true}]}'
+source: '{"uri": "mlops_project/qna_data/qna_train.csv"}'
+source_type: local

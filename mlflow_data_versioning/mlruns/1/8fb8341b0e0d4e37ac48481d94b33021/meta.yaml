@@ -1,0 +1,15 @@
+artifact_uri: file:///home/exdata/istinye/data_science/public%20repos/llama_qna/notebooks/mlruns/0/8fb8341b0e0d4e37ac48481d94b33021/artifacts
+end_time: 1718524080731
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8fb8341b0e0d4e37ac48481d94b33021
+run_name: fearless-snail-498
+run_uuid: 8fb8341b0e0d4e37ac48481d94b33021
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1718524080679
+status: 3
+tags: []
+user_id: aribra

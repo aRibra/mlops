@@ -1,0 +1,21 @@
+Question,Answer
+"What is the main goal of the proposed architecture, RETNET?","The main goal of the proposed architecture, RETNET, is to achieve training parallelism, low-cost inference, and good performance simultaneously."
+"What is the connection between recurrence and attention, according to the authors?","The authors theoretically derive the connection between recurrence and attention, showing that recurrence can be viewed as a form of attention."
+"What is the retention mechanism proposed in the work, and what are its three computation paradigms?","The retention mechanism is a sequence modeling approach that supports three computation paradigms: parallel, recurrent, and chunkwise recurrent. These paradigms allow for training parallelism, low-cost inference, and effiient sequence modeling, respectively."
+What does the chart in the output show?,"The chart in the output shows the scaling curves of RetNet and Transformer in terms of GPU memory, throughput, and latency."
+What is the main advantage of RetNet over Transformer?,The main advantage of RetNet over Transformer is its ability to achieve low-cost inference while maintaining high throughput and low latency.
+What does the figure in the output show?,The figure in the output shows the model size and perplexity of the languagedzie models trained on RetNet and Transformer.
+What is the main advantage of RetNet compared to Transformer?,"RetNet achieves low-cost inference, training parallelism, and favorable scaling curves compared to Transformer."
+What does Figure 2 show?,"Figure 2 shows that RetNet makes the ""impossible triangle"" possible, which achieves training parallelism, good performance, and low inference cost simultaneously."
+What was initially proposed to overcome the sequential training issue of recurrent models?,"Transformer [VSP+17] was initially proposed to overcome the sequential training issue of recurrent models, which was initially proposed by HS97."
+What was initially proposed to overcome the sequential training issue of recurrent models?,els [BMR+20].
+What is the O(N) complexity per step and memory-bound key-value cache in Transformers?,The growing sequence length increases GPU memory consumption as well as latency and reduces inference speed.
+"What is the so-called ""impossible triangle"" in the context of next-generation architecture?","It is challenging to achieve the goals of retaining training parallelism and competitive performance as Transformers while having efficient O(1) inference.
+
+Note: The numbers in the input and output are just examples and do not reflect the actual numbers in the text."
+What is the main idea of the text?,"The main idea of the text is that there have been three main strands of research on improving attention mechanisms in neural networks, but none of them have been able to break through the ""impossible triangle"" of low-cost inference, efficient long-term memory, and high performance."
+"What is the ""impossible triangle"" in the context of attention mechanisms?","The ""impossible triangle"" refers to the idea that it is difficult to achieve low-cost inference, efficient long-term memory, and high performance in attention mechanisms simultaneously."
+What is the main contributionscript of the proposed RetNet model?,The main contribution of the proposed RetNet model is achieving low-cost inference and efficient long-term memory while maintaining high performance in attention mechanisms.
+What does the author propose in the work?,"The author proposes RetNet, a low-cost inference and efficient long-sequence modeling method."
+What is the multi-scale retention mechanism in RetNet?,The multi-scale retention mechanism substitutes multi-head attention and enables efficient O(1) inference in terms of memory and computation.
+What are the three computation paradigms in RetNet?,"The three computation paradigms in RetNet are parallel, recurrent, and chunkwise recurrent representations."

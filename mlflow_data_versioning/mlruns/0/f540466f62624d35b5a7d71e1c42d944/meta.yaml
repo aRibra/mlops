@@ -1,0 +1,15 @@
+artifact_uri: file:///home/exdata/istinye/data_science/public%20repos/llama_qna/notebooks/mlops_project/mlruns/0/f540466f62624d35b5a7d71e1c42d944/artifacts
+end_time: 1718522169005
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f540466f62624d35b5a7d71e1c42d944
+run_name: treasured-shrew-333
+run_uuid: f540466f62624d35b5a7d71e1c42d944
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1718522168965
+status: 3
+tags: []
+user_id: aribra
